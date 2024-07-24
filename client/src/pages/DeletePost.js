@@ -6,7 +6,7 @@ export default function DeletePost() {
   const [redirect, setRedirect] = React.useState(false);
 
   async function handleDelete() {
-    const response = await fetch(`http://localhost:4000/post/${id}`, {
+    const response = await fetch(`https://blog-app-m-backend.vercel.app/post/${id}`, {
       method: 'DELETE',
       credentials: 'include',
     });
