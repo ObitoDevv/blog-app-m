@@ -20,7 +20,7 @@ app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
 // MongoDB connection URI
-const dbURI = 'mongodb+srv://divyanshug7897:obito123@cluster0.p1qzd2a.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const dbURI = 'mongodb+srv://divyanshug7897:obito123@cluster0.p1qzd2a.mongodb.net/?retryWrites=true&w=majority';
 
 // Connect to MongoDB
 mongoose.connect(dbURI, {
