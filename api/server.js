@@ -181,7 +181,7 @@ app.get('/post/:id', async (req, res) => {
   res.json(postDoc);
 });
 
-// Start server
-app.listen(4000, () => {
-  console.log('Server running on http://localhost:4000');
-});
+// // Start server
+// app.listen(4000, () => {
+//   console.log('Server running on https://blog-app-m-frontend.vercel.app');
+// });
