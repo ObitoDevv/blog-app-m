@@ -7,7 +7,7 @@ export default function PostPage() {
   const [postInfo, setPostInfo] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:4000/post/${id}`)
+    fetch(`https://blog-app-m-backend.vercel.app/post/${id}`)
       .then(response => response.json())
       .then(postInfo => setPostInfo(postInfo))
       .catch(error => console.error('Error fetching post:', error));
