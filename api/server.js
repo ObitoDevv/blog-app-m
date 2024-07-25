@@ -19,16 +19,26 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
-// MongoDB connection URI
-const dbURI = 'mongodb+srv://divyanshug7897:obito123@cluster0.p1qzd2a.mongodb.net/?retryWrites=true&w=majority';
 
-// Connect to MongoDB
-mongoose.connect(dbURI, {
+const app = express();
+const port = process.env.PORT || 4000;
+
+const uri = process.env.MONGODB_URI;
+
+mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-  .then(() => console.log('Connected to MongoDB'))
-  .catch((err) => console.error('Error connecting to MongoDB', err));
+.then(() => console.log('MongoDB connected'))
+.catch(err => console.error('MongoDB connection error:', err));
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
 
 // Register route
 app.post('/register', async (req, res) => {
@@ -179,9 +189,4 @@ app.get('/post/:id', async (req, res) => {
   const { id } = req.params;
   const postDoc = await Post.findById(id).populate('author', ['username']);
   res.json(postDoc);
-});
-
-// Start server
-app.listen(4000, () => {
-  console.log('Server running on https://blog-app-m-frontend.vercel.app');
 });
